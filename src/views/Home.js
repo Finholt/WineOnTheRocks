@@ -9,8 +9,8 @@ class Home extends Component {
         <div className="row">
           <div className="col-12">
             <Jumbotron>
-              <h1 class="display-4">Heya! Welcome! Hello!</h1>
-              <p class="lead">This is the website for the best worst trivia group out there: <strong>Wine on the Rocks</strong></p>
+              <h1 className="display-4">Heya! Welcome! Hello!</h1>
+              <p className="lead">This is the website for the best worst trivia group out there: <strong>Wine on the Rocks</strong></p>
             </Jumbotron>
           </div>
         </div>
