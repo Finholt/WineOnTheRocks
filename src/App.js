@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+
+import withFirebaseAuth from 'react-with-firebase-auth'
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import firebaseConfig from './firebase';
+
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 import './App.css';
 
 import Background from './views/Background'
 import Home from './views/Home';
 import Calendar from './views/Calendar';
 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
 class App extends Component {
   render() {
+    const {
+      user,
+      signOut,
+      signInWithGoogle,
+    } = this.props;
+
     return (
       <Router>
         <div className="App">
@@ -22,6 +37,11 @@ class App extends Component {
             <Nav className="mr-auto">
               <Link to={'/'} className="nav-link">Home</Link>
               <Link to={'/Calendar'} className="nav-link">Calendar</Link>
+            </Nav>
+            <Nav>
+              {
+                user ? <Button variant="light" onClick={signOut}>Sign Out</Button> : <Button variant="light" onClick={signInWithGoogle}>Sign In</Button>
+              }
             </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -37,4 +57,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const firebaseAppAuth = firebaseApp.auth();
+
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
+
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(App);
