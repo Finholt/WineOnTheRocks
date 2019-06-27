@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom'
 
 import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
@@ -36,7 +36,9 @@ class App extends Component {
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <Link to={'/'} className="nav-link">Home</Link>
-              <Link to={'/Calendar'} className="nav-link">Calendar</Link>
+              {
+                user ? <Link to={'/Calendar'} className="nav-link">Calendar</Link> : ''
+              }
             </Nav>
             <Nav>
               {
@@ -48,12 +50,32 @@ class App extends Component {
 
           <div className="Main container">
             <Route exact={true} path="/" component={Home}/>
-            <Route path="/Calendar" component={Calendar}/>
+            <PrivateRoute path="/Calendar" component={Calendar}/>
           </div>
 
         </div>
       </Router>
     );
+
+    function PrivateRoute({ component: Component, ...rest }) {
+      return (
+        <Route
+          {...rest}
+          render={props =>
+            user ? (
+              <Component {...props} />
+            ) : (
+              <Redirect
+                to={{
+                  pathname: "/",
+                  state: { from: props.location }
+                }}
+              />
+            )
+          }
+        />
+      );
+    }    
   }
 }
 
