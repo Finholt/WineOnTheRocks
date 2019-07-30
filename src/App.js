@@ -4,18 +4,18 @@ import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom
 import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseConfig from './firebase';
+import firebaseApp from './firebase';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import './App.css';
 
-import Background from './views/Background'
 import Home from './views/Home';
+import Scores from './views/Scores';
 import Calendar from './views/Calendar';
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
   render() {
@@ -28,17 +28,14 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Background></Background>
-
           <Navbar bg="info" expand="lg" variant="dark">
             <Link to={'/'} className="navbar-brand">Wine on the Rocks</Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <Link to={'/'} className="nav-link">Home</Link>
-              {
-                user ? <Link to={'/Calendar'} className="nav-link">Calendar</Link> : ''
-              }
+              { user ? <Link to={'/Scores'} className="nav-link">Scores</Link> : '' }
+              { user ? <Link to={'/Calendar'} className="nav-link">Calendar</Link> : '' }
             </Nav>
             <Nav>
               {
@@ -50,6 +47,7 @@ class App extends Component {
 
           <div className="Main container">
             <Route exact={true} path="/" component={Home}/>
+            <PrivateRoute path="/Scores" component={Scores}/>
             <PrivateRoute path="/Calendar" component={Calendar}/>
           </div>
 

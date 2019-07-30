@@ -1,5 +1,4 @@
 @import "./styles/variables";
-@import "./styles/background";
 
 .App {
   text-align: center;
@@ -7,13 +6,21 @@
   min-height: 100vh;
 }
 
-.Background {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 450px;
-  height: 300px;
-  overflow: hidden;
+.Scores {
+  text-align: left;
+  color: $off-white;
+
+  &__form {
+    max-width: 400px;
+  }
+
+  &__form-row {
+    display: flex;
+
+    .btn {
+      margin: 0 5px;
+    }
+  }
 }
 
 .navbar {
