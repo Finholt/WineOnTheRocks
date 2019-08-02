@@ -15,8 +15,6 @@ import Home from './views/Home';
 import Scores from './views/Scores';
 import Calendar from './views/Calendar';
 
-// const firebaseApp = firebase.initializeApp(firebaseConfig);
-
 class App extends Component {
   render() {
     const {

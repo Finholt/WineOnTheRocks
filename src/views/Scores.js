@@ -25,22 +25,28 @@ class Scores extends Component {
   }
   
   addScore = (scoreRow, e) => {
-    if(this.state.scores[scoreRow] < 20) {
-      this.state.scores[scoreRow]++
-      this.refreshState()
+    let scores = this.state.scores
+    
+    if(scores[scoreRow] < 20) {
+      scores[scoreRow]++
+      this.refreshState(scores)
     }
   }
 
   subtractScore = (scoreRow, e) => {
-    if(this.state.scores[scoreRow] > 0) {
-      this.state.scores[scoreRow]--
-      this.refreshState()
+    let scores = this.state.scores
+
+    if(scores[scoreRow] > 0) {
+      scores[scoreRow]--
+      this.refreshState(scores)
     }
   }
 
   changeScore = (scoreRow, e) => {
-    this.state.scores[scoreRow] = e.target.value !== '' ? parseInt(e.target.value) : ''
-    this.refreshState()
+    let scores = this.state.scores
+
+    scores[scoreRow] = e.target.value !== '' ? parseInt(e.target.value, 10) : ''
+    this.refreshState(scores)
   }
 
   createForm = () => {
@@ -102,8 +108,6 @@ class Scores extends Component {
             </Form>
           </div>
         </div>
-        
-        
       </div>
     );
   }
