@@ -8,7 +8,7 @@ import firebaseApp from './firebase';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
+import FilledButton from './components/buttons/Filled';
 import './App.css';
 
 import Home from './views/Home';
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar bg="info" expand="lg" variant="dark">
+          <Navbar bg="none" expand="lg" variant="dark">
             <Link to={'/'} className="navbar-brand">Wine on the Rocks</Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -37,14 +37,14 @@ class App extends Component {
             </Nav>
             <Nav>
               {
-                user ? <Button variant="light" onClick={signOut}>Sign Out</Button> : <Button variant="light" onClick={signInWithGoogle}>Sign In</Button>
+                user ? <FilledButton variant='primary' onClick={signOut}>Sign Out</FilledButton> : <FilledButton variant='primary' onClick={signInWithGoogle}>Sign In</FilledButton>
               }
             </Nav>
             </Navbar.Collapse>
           </Navbar>
 
           <div className="Main container">
-            <Route exact={true} path="/" component={Home}/>
+            <Route exact={true} path="/" component={Home} user={user}/>
             <PrivateRoute path="/Scores" component={Scores}/>
             <PrivateRoute path="/Calendar" component={Calendar}/>
           </div>

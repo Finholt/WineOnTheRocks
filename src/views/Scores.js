@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import FilledButton from '../components/buttons/Filled';
+import GhostButton from '../components/buttons/Ghost';
 
 import 'firebase/firestore';
 import firebaseApp from '../firebase';
@@ -58,9 +59,9 @@ class Scores extends Component {
         <Form.Group controlId={cid}>
           <Form.Label>Round {index + 1}</Form.Label>
           <div className="Scores__form-row">
-            <Button variant="info" onClick={(e) => this.subtractScore(index, e)}>-</Button>
-            <Form.Control type="number" placeholder="Enter Score" value={this.state.scores[index]} onChange={(e) => this.changeScore(index, e)} />
-            <Button variant="info" onClick={(e) => this.addScore(index, e)}>+</Button>
+            <GhostButton variant="secondary" onClick={(e) => this.subtractScore(index, e)}>-</GhostButton>
+            <Form.Control type="number" placeholder="Enter Score" value={this.state.scores[index]} onChange={(e) => this.changeScore(index, e)} className="scoreForm" />
+            <GhostButton variant="secondary" onClick={(e) => this.addScore(index, e)}>+</GhostButton>
           </div>
         </Form.Group>
       )
@@ -102,9 +103,9 @@ class Scores extends Component {
                 Total: {this.totalScores()}
               </div>
 
-              <Button variant="info" onClick={this.handleSubmit} block>
+              <FilledButton variant="primary" onClick={this.handleSubmit} block>
                 Submit
-              </Button>
+              </FilledButton>
             </Form>
           </div>
         </div>

@@ -1,9 +1,19 @@
 @import "./styles/variables";
 
 .App {
+  color: white;
   text-align: center;
-  background-color: $gray;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(0, 252, 230, 0.5), rgba(0, 252, 230, 0) 40%),
+    radial-gradient(circle at 55% 45%, rgba(168, 146, 251, 0.5), rgba(168, 146, 251, 0) 40%),
+    radial-gradient(circle at 25% 55%, rgba(255, 41, 102, 0.5), rgba(255, 41, 102, 0) 40%)
+    $black;
   min-height: 100vh;
+
+  sup {
+    top: -1em;
+    font-size: 50%;
+  }
 }
 
 .Scores {
@@ -27,7 +37,84 @@
   margin-bottom: 30px;
 }
 
-.jumbotron {
-  background-color: white !important;
-  border: 1px solid $blue;
+.Home {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  width: 95%;
+}
+
+.FilledButton {
+  border-radius: 50px;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.4s ease;
+
+  &--primary {
+    background-color: $primary;
+
+    &:hover {
+      background-color: darken($color: $primary, $amount: 10%);
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary;
+
+    &:hover {
+      background-color: darken($color: $secondary, $amount: 10%);
+    }
+  }
+
+  &--tertiary {
+    background-color: $tertiary-dark;
+
+    &:hover {
+      background-color: darken($color: $tertiary-dark, $amount: 10%);
+    }
+  }
+}
+
+.GhostButton {
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  transition: all 0.4s ease;
+  background: none;
+
+  &--primary {
+    color: $primary;
+    border: 1px solid $primary;
+
+    &:hover {
+      color: darken($color: $primary, $amount: 10%);
+      border: 1px solid darken($color: $primary, $amount: 10%);
+    }
+  }
+
+  &--secondary {
+    color: $secondary;
+    border: 1px solid $secondary;
+
+    &:hover {
+      color: darken($color: $secondary, $amount: 10%);
+      border: 1px solid darken($color: $secondary, $amount: 10%);
+    }
+  }
+
+  &--tertiary {
+    color: $tertiary-dark;
+    border: 1px solid $tertiary-dark;
+
+    &:hover {
+      color: darken($color: $tertiary-dark, $amount: 10%);
+      border: 1px solid darken($color: $tertiary-dark, $amount: 10%);
+    }
+  }
+}
+
+.scoreForm {
+  margin-left: 10px;
+  margin-right: 10px;
 }
