@@ -26,6 +26,7 @@ class Scores extends Component {
   }
   
   addScore = (scoreRow, e) => {
+    e.preventDefault();
     let scores = this.state.scores
     
     if(scores[scoreRow] < 20) {
@@ -35,6 +36,7 @@ class Scores extends Component {
   }
 
   subtractScore = (scoreRow, e) => {
+    e.preventDefault();
     let scores = this.state.scores
 
     if(scores[scoreRow] > 0) {
@@ -80,7 +82,9 @@ class Scores extends Component {
     return total;
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
     db.collection("scores").add({
       date: Date.now(),
       scores: this.state.scores
@@ -103,7 +107,7 @@ class Scores extends Component {
                 Total: {this.totalScores()}
               </div>
 
-              <FilledButton variant="primary" onClick={this.handleSubmit} block>
+              <FilledButton variant="primary" onClick={(e) => this.handleSubmit(e)} block>
                 Submit
               </FilledButton>
             </Form>
