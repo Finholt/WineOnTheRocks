@@ -1,6 +1,7 @@
 @import "./styles/variables";
 
 .App {
+  font-family: $oxygen;
   color: white;
   text-align: center;
   background:
@@ -9,6 +10,11 @@
     radial-gradient(circle at 25% 55%, rgba(255, 41, 102, 0.5), rgba(255, 41, 102, 0) 40%)
     $black;
   min-height: 100vh;
+
+  h1,
+  h2 {
+    font-family: $quicksand
+  }
 
   sup {
     top: -1em;

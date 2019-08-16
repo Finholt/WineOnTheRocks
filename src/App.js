@@ -12,6 +12,7 @@ import FilledButton from './components/buttons/Filled';
 import './App.css';
 
 import Home from './views/Home';
+import Charts from './views/Charts';
 import Scores from './views/Scores';
 import Calendar from './views/Calendar';
 
@@ -32,6 +33,7 @@ class App extends Component {
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <Link to={'/'} className="nav-link">Home</Link>
+              <Link to={'/Charts'} className="nav-link">Charts</Link>
               { user ? <Link to={'/Scores'} className="nav-link">Scores</Link> : '' }
               { user ? <Link to={'/Calendar'} className="nav-link">Calendar</Link> : '' }
             </Nav>
@@ -45,6 +47,7 @@ class App extends Component {
 
           <div className="Main container">
             <Route exact={true} path="/" component={Home} user={user}/>
+            <Route path="/Charts" component={Charts} user={user}/>
             <PrivateRoute path="/Scores" component={Scores}/>
             <PrivateRoute path="/Calendar" component={Calendar}/>
           </div>

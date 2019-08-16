@@ -1,8 +1,12 @@
 .App {
+  font-family: "Oxygen", sans-serif;
   color: white;
   text-align: center;
   background: radial-gradient(circle at 85% 15%, rgba(0, 252, 230, 0.5), rgba(0, 252, 230, 0) 40%), radial-gradient(circle at 55% 45%, rgba(168, 146, 251, 0.5), rgba(168, 146, 251, 0) 40%), radial-gradient(circle at 25% 55%, rgba(255, 41, 102, 0.5), rgba(255, 41, 102, 0) 40%) #040620;
   min-height: 100vh; }
+  .App h1,
+  .App h2 {
+    font-family: "Quicksand", sans-serif; }
   .App sup {
     top: -1em;
     font-size: 50%; }

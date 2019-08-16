@@ -7,6 +7,8 @@ import GhostButton from '../components/buttons/Ghost';
 import 'firebase/firestore';
 import firebaseApp from '../firebase';
 
+import moment from 'moment';
+
 const db = firebaseApp.firestore();
 
 class Scores extends Component {
@@ -86,7 +88,8 @@ class Scores extends Component {
     e.preventDefault();
     
     db.collection("scores").add({
-      date: Date.now(),
+      date: parseInt(moment().format('YYYYMMDD'), 10),
+      dateString: moment().format('MMMM Do YYYY'),
       scores: this.state.scores
     }); 
 
