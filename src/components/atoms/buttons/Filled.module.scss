@@ -1,0 +1,33 @@
+@import "../../../assets/styles/variables";
+
+.FilledButton {
+  border-radius: 50px;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.4s ease;
+}
+
+.primary {
+  background-color: $primary;
+
+  &:hover {
+    background-color: darken($color: $primary, $amount: 10%);
+  }
+}
+
+.secondary {
+  background-color: $secondary;
+
+  &:hover {
+    background-color: darken($color: $secondary, $amount: 10%);
+  }
+}
+
+.tertiary {
+  background-color: $tertiary-dark;
+
+  &:hover {
+    background-color: darken($color: $tertiary-dark, $amount: 10%);
+  }
+}

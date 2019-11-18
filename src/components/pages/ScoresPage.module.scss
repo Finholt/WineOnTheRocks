@@ -1,0 +1,23 @@
+@import "../../assets/styles/variables";
+
+.scores {
+  text-align: left;
+  color: $off-white;
+}
+
+.form {
+  max-width: 400px;
+}
+
+.formRow {
+  display: flex;
+
+  .btn {
+    margin: 0 5px;
+  }
+}
+
+.formRowInput {
+  margin-left: 10px;
+  margin-right: 10px;
+}

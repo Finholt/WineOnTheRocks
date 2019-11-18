@@ -1,0 +1,9 @@
+.graphWrap {
+  overflow: auto;
+}
+
+.graph {
+  @media (max-width: 575px) {
+    width: 200vw;
+  }
+}
