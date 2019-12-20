@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Form from 'react-bootstrap/Form';
-import FilledButton from '../atoms/buttons/Filled';
+import { Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import GhostButton from '../atoms/buttons/Ghost';
 import styles from './ScoresPage.module.scss';
 
@@ -66,6 +66,11 @@ const ScoresPage = () => {
             <Form.Control key={`input-${index + 1}`} type="number" placeholder="Enter Score" value={scores[index]} onChange={e => changeScore(index, e.target.value)} className={styles.formRowInput} />
             <GhostButton variant="secondary" onClick={e => incrementScore(index, e)}>+</GhostButton>
           </div>
+
+          <ToggleButtonGroup type="checkbox" className={styles.buttonGroup}>
+            <ToggleButton value={1} variant="outline-secondary">Joker Used</ToggleButton>
+            <ToggleButton value={2} variant="outline-secondary">Round Won</ToggleButton>
+          </ToggleButtonGroup>
         </Form.Group>
       )
     }
@@ -80,13 +85,24 @@ const ScoresPage = () => {
           <Form>
             { FormContent() }
 
-            <div>
-              Total: {scores.reduce((a, b) => a + b, 0)}
-            </div>
+            <Form.Group>
+              <Form.Label>Overall</Form.Label>
+              <ToggleButtonGroup type="checkbox" className={styles.buttonGroup}>
+                <ToggleButton value={1} variant="outline-primary">3<sup>rd</sup></ToggleButton>
+                <ToggleButton value={2} variant="outline-primary">2<sup>nd</sup></ToggleButton>
+                <ToggleButton value={3} variant="outline-primary">1<sup>st</sup></ToggleButton>
+              </ToggleButtonGroup>
+            </Form.Group>
 
-            <FilledButton variant="primary" onClick={submitScores} block>
-              Submit
-            </FilledButton>
+            <Form.Group>
+              <Form.Label>
+                Total: {scores.reduce((a, b) => a + b, 0)}
+              </Form.Label>
+
+              <Button onClick={submitScores} block>
+                Submit
+              </Button>
+            </Form.Group>
           </Form>
         </div>
       </div>

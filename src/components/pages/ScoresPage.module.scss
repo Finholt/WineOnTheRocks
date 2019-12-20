@@ -11,6 +11,7 @@
 
 .formRow {
   display: flex;
+  margin-bottom: 5px;
 
   .btn {
     margin: 0 5px;
@@ -20,4 +21,8 @@
 .formRowInput {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.buttonGroup {
+  width: 100%;
 }

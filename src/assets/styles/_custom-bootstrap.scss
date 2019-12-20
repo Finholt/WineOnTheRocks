@@ -1,0 +1,21 @@
+@import './variables';
+
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'info': $tertiary,
+  'light': $off-white,
+  'dark': $black,
+);
+$link-color: $primary;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.btn {
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
